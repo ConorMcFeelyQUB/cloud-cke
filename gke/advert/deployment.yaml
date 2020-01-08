@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: advert-gke
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: advert
+  template:
+    metadata:
+      labels:
+        app: advert
+    spec:
+      containers:
+      - name: advert-app
+        # Replace $PROJECT with your project ID and IMAGE_NAME with the name of the image (whole line can be replaced for different location image)
+        image: gcr.io/$PROJECT/gke-advert-i:latest
+        ports:
+        - containerPort: 8080
+        env:
+          - name: PORT
+            value: "8080"
+          - name: ADVERTIP
+            value: "PRIVATE_IP_HERE"
+          

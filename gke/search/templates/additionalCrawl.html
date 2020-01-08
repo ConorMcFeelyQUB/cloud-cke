@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+<title>QSE Indexer</title>
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    
+    <div class="row">
+        <div class="col">
+            <h1>Indexer</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>Sucessfully indexed page with URL: {{url}} </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>This page has <b>{{total_links}} links</b> within it.</p>
+            <p>Do you want the spider to "crawl" to these pages and index them as well?</p>
+            <p>This may take some time. As many of the links are likely to be to the same site to follow best practices a 5 second wait will be done 
+                between each request. So to index all these link it may take <b>{{total_links * 5}} seconds</b>
+            </p>
+        </div>
+    </div>
+
+    <form action="/crawl" method="POST">
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" name="exampleCheck1" value="{{url}}">
+          <label class="form-check-label" for="exampleCheck1">Scrape other pages</label>
+          <small id="checkboxHelp" class="form-text text-muted">Only goes 1 deep (You will not get this option for each additional page)</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
+    <a class="btn btn-secondary" href="/" role="button">Back</a>
+
+</div>
+
+
+{% endblock %}

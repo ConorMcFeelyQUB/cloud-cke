@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+<title>QSE Indexer</title>
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    
+    <div class="row">
+        <div class="col">
+            <h1>Indexer</h1>
+        </div>
+    </div>
+    <form action="/" method="POST">
+        <div class="form-group">
+          <label for="scraperURL">Provide a URL to scrape and store.</label>
+          <input type="text" class="form-control" id="scraperURL" placeholder="Enter URL" name="scraperURL" required>
+          <small id="AscraperHelp" class="form-text text-muted">If successfully inserted will be visible in search</small>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+</div>
+
+
+{% endblock %}

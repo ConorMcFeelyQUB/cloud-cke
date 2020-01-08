@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: search-gke
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: search
+  template:
+    metadata:
+      labels:
+        app: search
+    spec:
+      containers:
+      - name: search-app
+        # Replace $PROJECT with your project ID and IMAGE_NAME with the name of the image (whole line can be replaced for different location image)
+        image: gcr.io/$PROJECT/gke-search-i:latest
+        ports:
+        - containerPort: 8080
+        env:
+          - name: PORT
+            value: "8080"
+          - name: PAGETIP
+            value: "PRIVATE_IP_HERE"
+          - name: ADVERTIP
+            value: "PRIVATE_IP_HERE"
+          

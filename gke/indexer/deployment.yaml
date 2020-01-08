@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: indexer-gke
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: indexer
+  template:
+    metadata:
+      labels:
+        app: indexer
+    spec:
+      containers:
+      - name: indexer-app
+        # Replace $PROJECT with your project ID and IMAGE_NAME with the name of the image (whole line can be replaced for different location image)
+        image: gcr.io/$PROJECT/gke-indexer-i:latest
+        ports:
+        - containerPort: 8080
+        env:
+          - name: PORT
+            value: "8080"
+          - name: PAGETIP
+            value: "PRIVATE_IP_HERE"
+          

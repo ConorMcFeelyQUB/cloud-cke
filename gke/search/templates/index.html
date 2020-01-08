@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+<title>QSE Search</title>
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    
+
+    <div class="row" style="border-style: dotted; position: sticky; top: 0; background-color: yellow; z-index:10;">
+        <div class="col">
+            <h1><a href="{{adverts[0].link}}" style="color: black;">Advert: {{adverts[0].content}}</a></h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h1>Showing results for search term: "{{search_term}}"</h1>
+        </div>
+    </div>
+
+
+    {% if results == None or results|length < 1 %}
+        <h1>No results for this search term</h1>
+    {% else %}
+
+        {% for result in results %}
+        <div style="border-style: solid;">
+            <div class="row">
+                <div class="col">
+                    <h3><a href="{{result.link}}">{{result.link}}</a></h3>
+                </div>
+            </div>
+            <div class="row" style="padding-left:30px;">
+                <div class="col">
+                    <p>{{result.content}}...</p>
+                </div>
+            </div>
+        </div>
+        <br/>
+        {% endfor %}
+        
+    {% endif %}
+
+
+
+
+</div>
+
+
+{% endblock %}

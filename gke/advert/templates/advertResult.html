@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+<title>QSE Adverts</title>
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    
+    <div class="row">
+        <div class="col">
+            {% if error %}
+                <h1>Advert insert failed there was an error</h1>
+            {% else %}
+                <h1>Advert insert success</h1>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <p><b>Successfully created advert with content:</b> </p>
+            <p>{{content}}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <p><b>Successfully created advert with keyword(s):</b> </p>
+            <p>{{keywords}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p><b>Successfully created advert with URL:</b> </p>
+            <p>{{URL}}</p>
+        </div>
+    </div>
+    <a class="btn btn-primary" href="/" role="button">Back to create</a>
+</div>
+
+
+{% endblock %}

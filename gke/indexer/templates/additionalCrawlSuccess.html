@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+<title>QSE Indexer</title>
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    
+    <div class="row">
+        <div class="col">
+            <h1>Indexer</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>Sucessfully crawled links within page with URL: {{url}} </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>This origional page had <b>{{total_links}} links</b> within it.</p>
+            <p>{{successful_links}} out of {{total_links}} links were sucessfully scraped</p>
+            
+        </div>
+    </div>
+    
+    <a class="btn btn-secondary" href="/" role="button">Back</a>
+
+</div>
+
+
+{% endblock %}
