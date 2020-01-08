@@ -37,7 +37,7 @@ def index():
         cursor.execute(sql, values)
         db.commit()
         
-        return render_template("AdvertResult.html", error = error, content = advert_content, keywords = advert_keywords, URL = advert_URL)
+        return render_template("advertResult.html", error = error, content = advert_content, keywords = advert_keywords, URL = advert_URL)
 
     return render_template("index.html")
 
