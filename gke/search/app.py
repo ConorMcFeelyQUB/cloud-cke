@@ -8,24 +8,25 @@ advert_ip =  str(os.environ.get("ADVERTIP"))
 
 page_ip = str(os.environ.get("PAGEIP"))
 
-db_advert = mysql.connect(
-    host = advert_ip,
-    user = "root",
-    passwd = "QUBccProject"
-)
-
-db_page = mysql.connect(
-    host = page_ip,
-    user = "root",
-    passwd = "QUBccProject"
-)
-
 advert_database = "cloudcomputingadverts.advert"
 pages_database = "cloudcomputingpages.page"
 
 #No ranking part yet
 @app.route('/')
 def use_db():
+
+    db_advert = mysql.connect(
+        host = advert_ip,
+        user = "root",
+        passwd = "QUBccProject"
+    )
+
+    db_page = mysql.connect(
+        host = page_ip,
+        user = "root",
+        passwd = "QUBccProject"
+    )
+
     query_string = request.args.get("q")
     print(query_string)
 
