@@ -7,11 +7,6 @@ import os
 
 page_ip = str(os.environ.get("PAGEIP"))
 
-db = mysql.connect(
-    host = page_ip,
-    user = "root",
-    passwd = "QUBccProject"
-)
 
 database_name = "cloudcomputingpages.page"
 
@@ -21,6 +16,12 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def indexer():
     if request.method == "POST":
+
+        db = mysql.connect(
+            host = page_ip,
+            user = "root",
+            passwd = "QUBccProject"
+        )
         url = request.form.get("scraperURL")
 
         if url == None:
@@ -50,6 +51,13 @@ def indexer():
 
 @app.route('/crawl',  methods=['GET', 'POST'])
 def crawl():
+
+    db = mysql.connect(
+        host = page_ip,
+        user = "root",
+        passwd = "QUBccProject"
+    )
+
     if request.method == "POST":
         if request.form.get("exampleCheck1") == None:
             return render_template("error.html")
