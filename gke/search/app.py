@@ -11,8 +11,12 @@ page_ip = str(os.environ.get("PAGEIP"))
 advert_database = "cloudcomputingadverts.advert"
 pages_database = "cloudcomputingpages.page"
 
-#No ranking part yet
 @app.route('/')
+def testing():
+    return render_template("searchmain.html")
+
+#No ranking part yet
+@app.route('/search')
 def use_db():
 
     db_advert = mysql.connect(
@@ -98,34 +102,6 @@ def use_db():
     search_term = query_string if query_string else "Search"
 
     return render_template("index.html", results = result_list, search_term = search_term, adverts = advert_list)
-
-
-# @app.route('/')
-# def hello_world():
-#     return 'Hello, World!'
-
-# @app.route('/template')
-# def template_test():
-
-#     query_string = request.args.get("q")
-
-#     #Would do db stuff here
-#     # Something like: SELECT * FROM table  WHERE column LIKE '%word1%' or column LIKE '%word2%' or column LIKE '%word3%' ...
-#     # so before this would need to get and split words from the query string in order to make the SQL statement correctly 
-#     # probably a better way to do it than using LIKE with wildcards but this should work for the basic synario 
-
-#     result_list = []
-#     result = Search_result("https://getbootstrap.com/docs/4.4/layout/grid/", "Bootstrap layout info")
-#     result_list.append(result)
-#     result_list.append(result)
-
-#     for i in range(100):
-#         result_list.append(result)
-
-#     #QOL change to the placehold of the search bar if a serach has been done
-#     search_term = query_string if query_string else "Search"
-
-#     return render_template("index.html", results = result_list, search_term = search_term, advert = "Hello Advert")
 
 
 
